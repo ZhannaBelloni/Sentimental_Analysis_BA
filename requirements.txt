@@ -1,0 +1,19 @@
+notebook
+pandas
+numpy
+scikit-learn
+nltk
+matplotlib
+gensim
+tensorflow==2.1   # python3.7
+keras==2.3.1      # python3.7
+afinn
+seaborn
+matplotlib-venn
+# ============================== #
+# in case of errors ...
+# might need pip install urllib3==1.26.6
+# requests
+# if tk doesn't work ...
+# pyqt5
+# ============================== #

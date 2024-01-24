@@ -1,0 +1,74 @@
+{
+    "models": {
+        "NaiveSA": {
+            "data_selector__verbose": 1,
+            "data_selector__dimension": "reviews",
+            "naive_sa__weigth_added_words": 2.0,
+            "naive_sa__tokenizer_name": "split",
+            "naive_sa__use_frequency": false,
+            "naive_sa__verbose": 1
+        },
+        "SVM": {
+            "data_selector__verbose": 1,
+            "data_selector__dimension": "stamm",
+            "vect__ngram_range": [
+                1,
+                1
+            ],
+            "vect__stop_words": null,
+            "vect__tokenizer": null,
+            "vect__use_idf": false,
+            "svm__verbose": true,
+            "svm__kernel": "rbf",
+            "svm__C": 1.0,
+            "svm__max_iter": 5000,
+            "svm__tol": 0.01,
+            "svm__cache_size": 2000
+        },
+        "LogisticRegression": {
+            "clf__C": 100.0,
+            "clf__penalty": "l2",
+            "data_selector__dimension": "reviews_no_punctuation",
+            "data_selector__verbose": 1,
+            "vect__ngram_range": [
+                1,
+                2
+            ],
+            "vect__stop_words": null,
+            "vect__tokenizer": null,
+            "vect__use_idf": true
+        },
+        "RandomForest": {
+            "data_selector__verbose": 1,
+            "data_selector__dimension": "reviews_no_stopwords"
+        },
+        "LogisticRegressionW2V": {
+            "data_selector__verbose": 1,
+            "data_selector__dimension": "reviews_no_stopwords",
+            "vect__model": "/googleW2v/word2vec-google-news-300.gz",
+            "vect__verbose": 1
+        },
+        "RandomForestW2V": {
+            "data_selector__verbose": 1,
+            "data_selector__dimension": "reviews_no_stopwords",
+            "vect__model": "/googleW2v/word2vec-google-news-300.gz",
+            "vect__verbose": 1
+        },
+        "SVM_W2V": {
+            "data_selector__verbose": 1,
+            "data_selector__dimension": "reviews_no_stopwords",
+            "vect__model": "/googleW2v/word2vec-google-news-300.gz",
+            "svm__verbose": true,
+            "svm__kernel": "rbf",
+            "svm__C": 1.0,
+            "svm__max_iter": 5000,
+            "svm__tol": 0.01,
+            "svm__cache_size": 2000
+        }
+    },
+    "cross_validation": {
+        "cv": 5,
+        "n_jobs": -1,
+        "scoring": ["precision", "recall", "accuracy"]
+    }
+}

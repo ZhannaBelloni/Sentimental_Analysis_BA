@@ -1,0 +1,203 @@
+{
+    "models": {
+        "NaiveSA": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                        "reviews", 
+                        "reviews_no_punctuation", 
+                        "reviews_no_stopwords", 
+                        "stamm", 
+                        "stamm_no_punctuation", 
+                        "stamm_no_stop_punct"
+                ],
+                "naive_sa__weigth_added_words": [0.0, 0.5, 1.0, 2.0, 3.0],
+                "naive_sa__use_frequency": [true, false],
+                "naive_sa__tokenizer_name": ["split"],
+                "naive_sa__verbose": [1]
+            }
+        },
+        "AFinn": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews", 
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm", 
+                    "stamm_no_punctuation", 
+                    "stamm_no_stop_punct"
+                ]
+            },
+            "common": {
+                "cv": 1
+            }
+        },
+        "Vader": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews", 
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm", 
+                    "stamm_no_punctuation", 
+                    "stamm_no_stop_punct"
+                ]
+            },
+            "common": {
+                "cv": 1
+            }
+        },
+        "LogisticRegression": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm_no_punctuation"
+                ],
+                "vect__ngram_range": [[1, 2]],
+                "vect__stop_words": [null],
+                "vect__tokenizer": [null],
+                "vect__use_idf": [true],
+                "vect__norm": ["l2"],
+                "clf__penalty": ["l2"],
+                "clf__C": [100.0]
+            }
+        },
+        "LSTM": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm_no_punctuation", 
+                    "stamm_no_stop_punct"
+                ],
+                "vect__max_features": [500, 1000],
+                "vect__use_idf": [true, false],
+                "vect__norm": ["l2", null],
+                "lstm_sa__verbose": [1],
+                "lstm_sa__epoches": [1]
+            },
+            "common": {
+                "cv": 2
+            }
+        },
+        "RandomForest": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords",
+                    "stamm_no_stop_punct"
+                ],
+                "vect__norm": ["l2"],
+                "rndf__criterion": ["gini", "entropy"],
+                "rndf__n_jobs": [5]
+            }
+        },
+        "SVM": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews_no_stopwords", 
+                    "stamm_no_stop_punct"
+                ],
+                "vect__ngram_range": [[1, 1]],
+                "vect__stop_words": [null],
+                "vect__tokenizer": [null],
+                "vect__use_idf": [false, true],
+                "vect__norm": ["l2", null],
+                "svm__kernel": ["rbf", "linear", "sigmoid"],
+                "svm__C": [1.0, 10.0],
+                "svm__max_iter": [2000]
+            },
+            "common": {
+                "cv": 2
+            }
+        },
+        "LogisticRegressionW2V": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews", 
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm", 
+                    "stamm_no_punctuation", 
+                    "stamm_no_stop_punct"
+                ],
+                "vect__model": ["/googleW2v/word2vec-google-news-300.gz"],
+                "vect__verbose": [1],
+                "clf__penalty": ["l1", "l2"],
+                "clf__C": [1.0, 10.0, 100.0]
+            },
+            "common": {
+                "cv": 2
+            }
+        },
+        "LSTM_W2V": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm_no_punctuation", 
+                    "stamm_no_stop_punct"
+                ],
+                "lstm_sa__max_words": [300],
+                "lstm_sa__model": ["/googleW2v/word2vec-google-news-300.gz"],
+                "lstm_sa__words": ["/datasets/all_words.csv"],
+                "lstm_sa__verbose": [1],
+                "lstm_sa__bidirectional": [true],
+                "lstm_sa__layer_1": [true],
+                "lstm_sa__layer_1_size": [64],
+                "lstm_sa__layer_1_activation": ["relu"],
+                "lstm_sa__output_activation": ["softmax"],
+                "lstm_sa__epoches": [5]
+            }
+        },
+        "RandomForestW2V": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm_no_stop_punct"
+                ],
+                "vect__model": ["/googleW2v/word2vec-google-news-300.gz"],
+                "rndf__criterion": ["gini", "entropy"],
+                "rndf__n_jobs": [5]
+            }
+        },
+        "SVM_W2V": {
+            "grid_search": {
+                "data_selector__verbose": [1],
+                "data_selector__dimension": [
+                    "reviews", 
+                    "reviews_no_punctuation", 
+                    "reviews_no_stopwords", 
+                    "stamm", 
+                    "stamm_no_punctuation", 
+                    "stamm_no_stop_punct"
+                ],
+                "vect__model": ["/googleW2v/word2vec-google-news-300.gz"],
+                "vect__verbose": [1],
+                "svm__kernel": ["rbf", "linear", "sigmoid"],
+                "svm__C": [1.0, 10.0],
+                "svm__max_iter": [2000]
+            },
+            "common": {
+                "cv": 2
+            }
+        }
+    },
+    "common": {
+        "scoring": ["precision", "recall", "accuracy"],
+        "cv": 10,
+        "verbose": 3,
+        "n_repetition": 10
+    }
+}
